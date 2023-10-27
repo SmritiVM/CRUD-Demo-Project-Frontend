@@ -6,7 +6,7 @@ function StudentListRow(props){
     const {_id, name, email, rollNo} = props.obj;
 
     const handleClick = () => {
-        Axios.delete("http://localhost:4000/studentRoute/delete-student/" + _id)
+        Axios.delete("https://crud-demo-project.onrender.com/studentRoute/delete-student/" + _id)
         .then((res) => {
             if(res.status === 200){
                 alert("Record deleted successfully");
@@ -22,10 +22,12 @@ function StudentListRow(props){
             <td>{name}</td>
             <td>{email}</td>
             <td>{rollNo}</td>
-            <td>
+            <td class = "d-flex justify-content-center">
+                <Link class = "text-decoration-none text-light" to = {"/edit-student/" + _id}>
                 <button class = "btn btn-success" >
-                    <Link class = "text-decoration-none text-light" to = {"/edit-student/" + _id}>Edit</Link>
+                    Edit
                     </button>
+                </Link>
                 <button class = "btn btn-danger"onClick = {handleClick} >Delete</button>
             </td>
            

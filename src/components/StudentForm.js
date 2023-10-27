@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function StudentForm(props)
 {
@@ -6,6 +6,11 @@ function StudentForm(props)
     const [email,setEmail] = useState(props.emailValue);
     const [rollNo,setRollNo] = useState(props.rollNoValue);
 
+    useEffect(() => {
+        setName(props.nameValue);
+        setEmail(props.emailValue);
+        setRollNo(props.rollNoValue);
+    }, [props.nameValue, props.emailValue, props.rollNoValue]);
     const arr = [name,email,rollNo];  //[Raj,raj@gmail.com,1]
     // Data available in the child component needs to be transferred to parent component
     // Callback function

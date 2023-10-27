@@ -10,7 +10,7 @@ function EditStudent(){
     const [newData, setNewData] = useState([])
 
     useEffect(() => {
-        Axios.get("http://localhost:4000/studentRoute/update-student/" + id)
+        Axios.get("https://crud-demo-project.onrender.com/studentRoute/update-student/" + id)
         .then((res) => {
             if(res.status === 200){
                 const {name, email, rollNo} = res.data;
@@ -28,7 +28,7 @@ function EditStudent(){
 
     const handleSubmit = () => {
         const data = {name: newData[0], email: newData[1], rollNo: newData[2]};
-        Axios.put("http://localhost:4000/studentRoute/update-student/" + id, data)
+        Axios.put("https://crud-demo-project.onrender.com/studentRoute/update-student/" + id, data)
         .then((res) => {
             if(res.status === 200)
                 alert("record updated successfully")
@@ -42,7 +42,9 @@ function EditStudent(){
             <StudentForm getState = {getState}
             nameValue = {initialValue.name}
             emailValue = {initialValue.email}
-            rollNoValue = {initialValue.rollNo}/>
+            rollNoValue = {initialValue.rollNo}>
+                Update student
+            </StudentForm>
         </form>
     )
 
